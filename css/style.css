@@ -1,0 +1,268 @@
+/* Resetting default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    padding: 20px;
+}
+
+/* Main heading */
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* Balance container */
+.balance-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.balance-container h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.bal-sheet {
+    font-size: 18px;
+    color: #4caf50;
+}
+
+.bal-sheet#total-expenses {
+    color: #e74c3c;
+}
+
+.bal-sheet#total-income {
+    color: #3498db;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+input, select, button {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+input, select {
+    width: 100%;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Transaction list styling */
+.transaction-list {
+    margin-top: 30px;
+}
+
+.transaction-list h3 {
+    font-size: 24px;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Responsive styling */
+@media screen and (max-width: 768px) {
+    .balance-container {
+        padding: 15px;
+    }
+
+    .balance-container h1 {
+        font-size: 22px;
+    }
+
+    .bal-sheet {
+        font-size: 16px;
+    }
+
+    .transaction-list h3 {
+        font-size: 20px;
+    }
+
+    form {
+        width: 100%;
+        padding: 15px;
+    }
+
+    input, select, button {
+        font-size: 14px;
+    }
+
+    .transaction-list ul {
+        padding: 10px;
+    }
+
+    li {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .balance-container {
+        padding: 10px;
+    }
+
+    .balance-container h1 {
+        font-size: 20px;
+    }
+
+    .bal-sheet {
+        font-size: 14px;
+    }
+
+    form {
+        width: 100%;
+        padding: 12px;
+    }
+
+    form input, form select {
+        font-size: 12px;
+    }
+
+    form button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .transaction-list h3 {
+        font-size: 18px;
+    }
+
+    li {
+        font-size: 12px;
+    }
+
+    .delete-btn {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+}
+/* Balance container */
+.balance-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.balance-container h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Adjust the balance display */
+#balance {
+    font-size: 36px;  /* Larger font size for the balance */
+    font-weight: bold;
+    color: #3498db; /* You can change this color */
+}
+
+/* Flex styling for income and expense */
+.bal-sheet {
+    font-size: 18px;  /* Default font size for income and expense */
+    color: #4caf50;
+}
+
+.bal-sheet#total-expenses {
+    color: #e74c3c;  /* Expense color */
+}
+
+.bal-sheet#total-income {
+    color: #3498db;  /* Income color */
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+    .balance-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #balance {
+        font-size: 28px;  /* Slightly smaller on mobile, but still larger */
+    }
+
+    .bal-sheet {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .bal-sheet#total-income {
+        color: #3498db;
+    }
+
+    .bal-sheet#total-expenses {
+        color: #e74c3c;
+    }
+}
