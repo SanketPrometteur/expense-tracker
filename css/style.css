@@ -19,32 +19,52 @@ h1 {
     color: #333;
 }
 
-/* Balance container */
+/* Balance container styles */
 .balance-container {
-    background: #fff;
+    background-color: #1a2128; /* Darker blue-gray for background */
+    color: #ecf0f1; /* Light text color for good contrast */
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    margin-bottom: 20px; /* Spacing between balance and inputs */
     text-align: center;
+    font-family: 'Arial', sans-serif;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
 }
 
-.balance-container h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
+/* Hover effect on balance container */
+.balance-container:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Darker shadow when hovering */
 }
 
+/* Balance header style */
+.balance-container h1,
+.balance-container h5 {
+    margin: 5px 0;
+    font-size: 1.2em;
+    color: #0f5683; /* Gold color for balance text */
+}
+
+/* Adjust the balance display */
+#balance {
+    font-size: 36px;  /* Larger font size for the balance */
+    font-weight: bold;
+    color: #3498db; /* Blue color */
+}
+
+/* Flex styling for income and expense */
 .bal-sheet {
-    font-size: 18px;
-    color: #4caf50;
+    font-weight: bold;
+    font-size: 1.1em;
 }
 
 .bal-sheet#total-expenses {
-    color: #e74c3c;
+    color: #e74c3c; /* Expense color */
 }
 
 .bal-sheet#total-income {
-    color: #3498db;
+    color: #3498db; /* Income color */
 }
 
 /* Form styling */
@@ -109,6 +129,7 @@ li {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Delete button styling */
 button.delete-btn {
     background-color: #e74c3c;
     color: white;
@@ -124,22 +145,28 @@ button.delete-btn:hover {
     background-color: #c0392b;
 }
 
+/* Transaction list (scrollable) */
+#transaction-list {
+    max-height: 300px; /* Limit height for scrolling */
+    overflow-y: auto; /* Vertical scrolling */
+    list-style: none;
+    padding: 0;
+}
+
 /* Responsive styling */
 @media screen and (max-width: 768px) {
     .balance-container {
-        padding: 15px;
+        flex-direction: column;
+        text-align: center;
     }
 
-    .balance-container h1 {
-        font-size: 22px;
+    #balance {
+        font-size: 28px;  /* Slightly smaller on mobile */
     }
 
     .bal-sheet {
         font-size: 16px;
-    }
-
-    .transaction-list h3 {
-        font-size: 20px;
+        margin-top: 10px;
     }
 
     form {
@@ -202,67 +229,5 @@ button.delete-btn:hover {
     .delete-btn {
         padding: 4px 8px;
         font-size: 12px;
-    }
-}
-/* Balance container */
-.balance-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-}
-
-.balance-container h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-/* Adjust the balance display */
-#balance {
-    font-size: 36px;  /* Larger font size for the balance */
-    font-weight: bold;
-    color: #3498db; /* You can change this color */
-}
-
-/* Flex styling for income and expense */
-.bal-sheet {
-    font-size: 18px;  /* Default font size for income and expense */
-    color: #4caf50;
-}
-
-.bal-sheet#total-expenses {
-    color: #e74c3c;  /* Expense color */
-}
-
-.bal-sheet#total-income {
-    color: #3498db;  /* Income color */
-}
-
-/* Mobile responsiveness */
-@media screen and (max-width: 768px) {
-    .balance-container {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    #balance {
-        font-size: 28px;  /* Slightly smaller on mobile, but still larger */
-    }
-
-    .bal-sheet {
-        font-size: 16px;
-        margin-top: 10px;
-    }
-
-    .bal-sheet#total-income {
-        color: #3498db;
-    }
-
-    .bal-sheet#total-expenses {
-        color: #e74c3c;
     }
 }
