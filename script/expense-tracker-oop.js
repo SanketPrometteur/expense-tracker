@@ -48,9 +48,16 @@ class ExpenseTracker {
 
         this.transactions.forEach(transaction => {
             const listItem = document.createElement('li');
-            // Display transaction type along with description and amount
+            
+            // Apply background color based on the transaction type
+            if (transaction.type === 'income') {
+                listItem.style.backgroundColor = '#d4edda';  // Light green for income
+            } else if (transaction.type === 'expense') {
+                listItem.style.backgroundColor = '#f8d7da';  // Light red for expense
+            }
+
+            // Display transaction type, description, and amount
             listItem.textContent = `${transaction.type.charAt(0).toUpperCase() + transaction.type.slice(1)} - ${transaction.description}: ₹${parseFloat(transaction.amount).toFixed(2)}`;
-            listItem.classList.add(transaction.type);
 
             // Add delete button to each transaction
             const deleteBtn = document.createElement('button');
