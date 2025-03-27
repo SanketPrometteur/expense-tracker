@@ -1,100 +1,99 @@
-export class Transaction{
+export class Transaction {
     id = Date.now();
     description;
     amount;
     type;
 
-    constructor(description,amount,type){
+    constructor(description, amount, type) {
         this.id = Date.now();
         this.description = description;
-        this.amount = amount;
+        this.amount = parseFloat(amount).toFixed(2); // Ensure the amount is a number and rounded to 2 decimals
         this.type = type;
     }
-
 }
 
-class ExpenseTracker{
+class ExpenseTracker {
     transactions;
 
-    constructor(){
+    constructor() {
         this.transactions = JSON.parse(localStorage.getItem('transactions')) || [];
-
     }
 
-    addTransaction(description,amount,type){
-        const transaction = new Transaction(description,amount,type);
+    addTransaction(description, amount, type) {
+        const transaction = new Transaction(description, amount, type);
 
         this.transactions.push(transaction);
         this.updateLocalStorage();
         this.updateUI();
     }
 
-    deleteTransaction(id){
-        this.transactions = this.transactions.filter(transaction=> transaction.id !== id);
+    deleteTransaction(id) {
+        this.transactions = this.transactions.filter(transaction => transaction.id !== id);
         this.updateLocalStorage();
         this.updateUI();
     }
-
 
     updateUI() {
         const transactionList = document.getElementById('transaction-list');
         const totalIncome = document.getElementById('total-income');
         const totalExpenses = document.getElementById('total-expenses');
         const balance = document.getElementById('balance');
-    
+
         // Clear the list
         transactionList.innerHTML = '';
-    
+
         // Calculate total income, expenses, and balance
         let income = 0;
         let expense = 0;
-    
+
         this.transactions.forEach(transaction => {
-          const listItem = document.createElement('li');
-          listItem.textContent = `${transaction.description}: ${transaction.amount}`;
-          listItem.classList.add(transaction.type);
-    
-          // Add delete button to each transaction
-          const deleteBtn = document.createElement('button');
-          deleteBtn.textContent = 'Delete';
-          deleteBtn.onclick = () => this.deleteTransaction(transaction.id);
-          listItem.appendChild(deleteBtn);
-    
-          transactionList.appendChild(listItem);
-    
-          if (transaction.type === 'income') {
-            income += transaction.amount;
-          } else {
-            expense += transaction.amount;
-          }
+            const listItem = document.createElement('li');
+            // Display transaction type along with description and amount
+            listItem.textContent = `${transaction.type.charAt(0).toUpperCase() + transaction.type.slice(1)} - ${transaction.description}: ₹${parseFloat(transaction.amount).toFixed(2)}`;
+            listItem.classList.add(transaction.type);
+
+            // Add delete button to each transaction
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.onclick = () => this.deleteTransaction(transaction.id);
+            listItem.appendChild(deleteBtn);
+
+            transactionList.appendChild(listItem);
+
+            // Calculate total income and expenses
+            if (transaction.type === 'income') {
+                income += parseFloat(transaction.amount);
+            } else {
+                expense += parseFloat(transaction.amount);
+            }
         });
-    
-        totalIncome.textContent = income;
-        totalExpenses.textContent = expense;
-        balance.textContent = income - expense;
-      }
 
-      updateLocalStorage() {
+        // Display total income, total expenses, and balance with ₹ symbol
+        totalIncome.textContent = `₹${income.toFixed(2)}`;
+        totalExpenses.textContent = `₹${expense.toFixed(2)}`;
+        balance.textContent = `₹${(income - expense).toFixed(2)}`;
+    }
+
+    updateLocalStorage() {
         localStorage.setItem('transactions', JSON.stringify(this.transactions));
-      }
+    }
 }
-
 
 const tracker = new ExpenseTracker();
 
 // Add transaction event listener
 document.getElementById('transaction-form').addEventListener('submit', (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const description = document.getElementById('description').value;
-  const amount = document.getElementById('amount').value;
-  const type = document.getElementById('transaction-type').value;
+    const description = document.getElementById('description').value;
+    const amount = document.getElementById('amount').value;
+    const type = document.getElementById('transaction-type').value;
 
-  tracker.addTransaction(description, amount, type);
+    tracker.addTransaction(description, amount, type);
 
-  // Clear the form
-  document.getElementById('description').value = '';
-  document.getElementById('amount').value = '';
+    // Clear the form
+    document.getElementById('description').value = '';
+    document.getElementById('amount').value = '';
 });
 
 // Initial UI update

@@ -16,7 +16,7 @@ function updateUI() {
 
   transactions.forEach(transaction => {
     const listItem = document.createElement('li');
-    listItem.textContent = `${transaction.description}: ${transaction.amount}`;
+    listItem.textContent = `${transaction.type} ${transaction.description}: ${transaction.amount}`;
     listItem.classList.add(transaction.type);
     
     // Add delete button to each transaction
@@ -48,7 +48,9 @@ document.getElementById('transaction-form').addEventListener('submit', (e) => {
   e.preventDefault();
 
   const description = document.getElementById('description').value;
-  const amount = document.getElementById('amount').value;
+
+  const amount = parseFloat(document.getElementById('amount').value).toFixed('2');
+
   const type = document.getElementById('transaction-type').value;
 
   const transaction = {
