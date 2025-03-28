@@ -12,29 +12,30 @@
 <body>
 
     <!-- Transaction Form Section (Fixed Position) -->
-    <form id="transaction-form">
-        <h1>Expense Tracker</h1>
-        <div class="balance-container">
-            <h1>Balance: ₹<span id="balance">0</span></h1>
-            <h5 class="bal-sheet">Total Income: ₹<span id="total-income" class="bal-sheet">0</span></h5>
-            <h5 class="bal-sheet">Total Expenses: ₹<span id="total-expenses" class="bal-sheet">0</span></h5>
-        </div>
-        <input type="text" id="description" placeholder="Description" required>
-        <input type="text" id="amount" placeholder="Amount" required>
-        <select id="transaction-type">
-            <option value="income">Income</option>
-            <option value="expense">Expense</option>
-        </select>
-        <button type="submit" id="add-transaction-btn">Add Transaction</button>
-    </form>
-
-    <!-- Transaction List Section (Scrollable) -->
-    <div class="transaction-list">
-        <h3>Transactions</h3>
-        <ul id="transaction-list"></ul>
+    <!-- Transaction Form Section (Fixed Position) -->
+<form id="transaction-form">
+    <h1>Expense Tracker</h1>
+    <div class="balance-container">
+        <h1>Balance: <span id="balance">₹74.73</span></h1>
+        <h5 class="bal-sheet">Total Income: <span id="total-income" class="bal-sheet">₹107.77</span></h5>
+        <h5 class="bal-sheet">Total Expenses: <span id="total-expenses" class="bal-sheet">₹33.04</span></h5>
     </div>
+    <input type="text" id="description" placeholder="Description" required>
+    <input type="text" id="amount" placeholder="Amount" required>
+    <select id="transaction-type">
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+    </select>
+    <button type="submit" id="add-transaction-btn">Add Transaction</button>
+</form>
 
-    <script type="module" src="./script/expense-tracker-oop.js"></script>
+<!-- Transaction List Section (Scrollable) -->
+<div class="transaction-list">
+    <h3>Transactions</h3>
+    <ul id="transaction-list"></ul>
+</div>
+
+<script type="module" src="./script/expense-tracker-oop.js"></script>
 
 </body>
 

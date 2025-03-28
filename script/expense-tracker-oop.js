@@ -7,10 +7,11 @@ export class Transaction {
     constructor(description, amount, type) {
         this.id = Date.now();
         this.description = description;
-        this.amount = parseFloat(amount).toFixed(2); // Ensure the amount is a number and rounded to 2 decimals
+        this.amount = parseFloat(amount).toFixed(2);
         this.type = type;
     }
 }
+
 
 class ExpenseTracker {
     transactions;
@@ -49,14 +50,16 @@ class ExpenseTracker {
         this.transactions.forEach(transaction => {
             const listItem = document.createElement('li');
             
-            // Apply background color based on the transaction type
+            // Apply background color based on the transaction type and Calculate total income and expenses
             if (transaction.type === 'income') {
-                listItem.style.backgroundColor = '#d4edda';  // Light green for income
+                listItem.style.backgroundColor = '#d4edda'; 
+                income += parseFloat(transaction.amount); 
             } else if (transaction.type === 'expense') {
-                listItem.style.backgroundColor = '#f8d7da';  // Light red for expense
+                listItem.style.backgroundColor = '#f8d7da'; 
+                expense += parseFloat(transaction.amount); 
             }
 
-            // Display transaction type, description, and amount
+            
             listItem.textContent = `${transaction.type.charAt(0).toUpperCase() + transaction.type.slice(1)} - ${transaction.description}: ₹${parseFloat(transaction.amount).toFixed(2)}`;
 
             // Add delete button to each transaction
@@ -68,11 +71,11 @@ class ExpenseTracker {
             transactionList.appendChild(listItem);
 
             // Calculate total income and expenses
-            if (transaction.type === 'income') {
-                income += parseFloat(transaction.amount);
-            } else {
-                expense += parseFloat(transaction.amount);
-            }
+            // if (transaction.type === 'income') {
+            //     income += parseFloat(transaction.amount);
+            // } else {
+            //     expense += parseFloat(transaction.amount);
+            // }
         });
 
         // Display total income, total expenses, and balance with ₹ symbol
