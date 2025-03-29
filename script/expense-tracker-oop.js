@@ -1,4 +1,4 @@
-export class Transaction {
+class Transaction {
     id = Date.now();
     description;
     amount;
@@ -96,10 +96,15 @@ document.getElementById('transaction-form').addEventListener('submit', (e) => {
     e.preventDefault();
 
     const description = document.getElementById('description').value;
-    const amount = document.getElementById('amount').value;
+    const amount = Number(document.getElementById('amount').value);
     const type = document.getElementById('transaction-type').value;
+    if(amount>0){
 
-    tracker.addTransaction(description, amount, type);
+
+        tracker.addTransaction(description, amount, type);
+    }else{
+        alert('Amount should be greater than 0.');
+    }
 
     // Clear the form
     document.getElementById('description').value = '';
